@@ -1,0 +1,29 @@
+.product-list {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 56px 24px;
+}
+
+.product-list-title {
+  margin: 0 0 24px;
+  font-size: 1.5rem;
+}
+
+/* 넓은 화면 3칸 → 태블릿 2칸 → 휴대폰 1칸 */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

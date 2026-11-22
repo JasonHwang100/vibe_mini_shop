@@ -1,0 +1,26 @@
+.product-card {
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.product-card-image {
+  aspect-ratio: 4 / 3;
+  background: #d9d9d9;
+}
+
+.product-card-body {
+  padding: 14px 16px 18px;
+}
+
+.product-card-name {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.product-card-price {
+  margin: 0;
+  font-weight: 700;
+  color: #2f5bea;
+}
