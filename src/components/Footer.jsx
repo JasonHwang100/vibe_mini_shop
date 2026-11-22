@@ -6,8 +6,9 @@ function Footer() {
     <footer className="footer">
       <p className="footer-name">미니 쇼핑몰</p>
       <p className="footer-contact">
-        연락처 010-0000-0000 <span className="footer-divider">|</span> 이메일
-        hello@example.com
+        <span className="footer-contact-item">연락처 010-0000-0000</span>
+        <span className="footer-divider" aria-hidden="true">|</span>
+        <span className="footer-contact-item">이메일 hello@example.com</span>
       </p>
       <p className="footer-copyright">© 2026 미니 쇼핑몰. All rights reserved.</p>
     </footer>

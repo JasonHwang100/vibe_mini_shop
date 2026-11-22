@@ -1,15 +1,22 @@
 .header {
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+}
+
+/* 상품 목록·이용 안내와 같은 폭(1080px)과 좌우 여백(24px) */
+.header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1080px;
+  margin: 0 auto;
   padding: 16px 24px;
-  border-bottom: 1px solid #e5e5e5;
-  background: #fff;
 }
 
 .header-logo {
   font-size: 1.3rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .header-menu {
@@ -27,9 +34,69 @@
   background: none;
   font: inherit;
   color: #333;
+  white-space: nowrap;
   cursor: pointer;
 }
 
 .header-menu-item:hover {
   background: #f2f2f2;
+}
+
+/* 메뉴 아이콘(줄 3개): 넓은 화면에서는 숨긴다 */
+.header-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0 9px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+}
+
+.header-menu-toggle:hover {
+  background: #f2f2f2;
+}
+
+.header-menu-toggle-bar {
+  display: block;
+  height: 2px;
+  border-radius: 1px;
+  background: #333;
+}
+
+/* 좁은 화면: 메뉴 아이콘을 보이고, 누르면 메뉴가 아래로 펼쳐진다 */
+@media (max-width: 560px) {
+  .header-inner {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+  }
+
+  .header-menu-toggle {
+    display: flex;
+  }
+
+  .header-nav {
+    display: none;
+    width: 100%;
+  }
+
+  .header-nav.is-open {
+    display: block;
+  }
+
+  .header-menu {
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 8px;
+  }
+
+  .header-menu-item {
+    width: 100%;
+    padding: 10px 12px;
+    text-align: left;
+  }
 }

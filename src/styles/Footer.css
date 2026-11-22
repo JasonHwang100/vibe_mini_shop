@@ -25,3 +25,19 @@
   margin: 12px 0 0;
   font-size: 0.8rem;
 }
+
+/* 연락처, 이메일은 각각 중간에서 줄이 바뀌지 않게 한다 */
+.footer-contact-item {
+  white-space: nowrap;
+}
+
+/* 좁은 화면: 연락처와 이메일을 두 줄로, 구분선은 숨긴다 */
+@media (max-width: 560px) {
+  .footer-contact-item {
+    display: block;
+  }
+
+  .footer-divider {
+    display: none;
+  }
+}

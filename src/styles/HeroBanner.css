@@ -1,5 +1,11 @@
 .hero-banner {
-  padding: 64px 24px;
+  /* 넓은 화면: 높이 480px, 내용은 위아래 가운데 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+  padding: 56px 24px;
   text-align: center;
   background: #f5f7fb;
 }
@@ -7,6 +13,8 @@
 .hero-banner-title {
   margin: 0 0 12px;
   font-size: 2rem;
+  line-height: 1.35;
+  word-break: keep-all;
 }
 
 .hero-banner-text {
@@ -27,4 +35,15 @@
 
 .hero-banner-button:hover {
   background: #2448c2;
+}
+
+/* 좁은 화면: 높이를 화면 높이의 65% 로 */
+@media (max-width: 720px) {
+  .hero-banner {
+    min-height: 65vh;
+  }
+
+  .hero-banner-title {
+    font-size: 1.6rem;
+  }
 }

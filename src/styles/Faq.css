@@ -1,0 +1,34 @@
+/* 이용 안내와 같은 폭·여백 (위 여백 0: 앞 영역의 아래 여백 56px 으로 간격) */
+.faq {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px 56px;
+}
+
+.faq-title {
+  margin: 0 0 24px;
+  font-size: 1.5rem;
+}
+
+.faq-list {
+  margin: 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+.faq-item {
+  padding: 18px 4px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.faq-question {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.faq-answer {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+  word-break: keep-all;
+}
