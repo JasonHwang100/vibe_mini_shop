@@ -1,11 +1,13 @@
 .hero-banner {
   /* 넓은 화면: 높이 480px, 내용은 위아래 가운데 */
+  position: relative; /* 버튼을 이 영역의 오른쪽 아래에 붙이기 위한 기준 */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 480px;
-  padding: 56px 24px;
+  /* 아래쪽 여백을 넉넉히 두어 글자가 버튼에 가리지 않게 한다 */
+  padding: 56px 24px 96px;
   text-align: center;
   background: #f5f7fb;
 }
@@ -17,12 +19,20 @@
   word-break: keep-all;
 }
 
+/* 서브 카피: 기존 크기의 130%, 자간 -1px */
 .hero-banner-text {
-  margin: 0 0 28px;
+  margin: 0;
+  font-size: 130%;
+  letter-spacing: -1px;
   color: #555;
+  word-break: keep-all;
 }
 
+/* CTA 버튼: 키 비주얼 영역의 오른쪽 아래 */
 .hero-banner-button {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
   padding: 12px 28px;
   border: none;
   border-radius: 8px;
@@ -31,8 +41,10 @@
   font: inherit;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
+/* 마우스를 올리면 배경색이 조금 어두워진다 */
 .hero-banner-button:hover {
   background: #2448c2;
 }
@@ -45,5 +57,10 @@
 
   .hero-banner-title {
     font-size: 1.6rem;
+  }
+
+  .hero-banner-button {
+    right: 16px;
+    bottom: 16px;
   }
 }
