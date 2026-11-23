@@ -5,12 +5,16 @@
 
 /* 상품 목록·이용 안내와 같은 폭(1080px)과 좌우 여백(24px) */
 .header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   max-width: 1080px;
   margin: 0 auto;
   padding: 16px 24px;
+}
+
+/* 윗줄: 로고와 유틸리티 메뉴를 양끝 정렬 */
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header-logo {
@@ -19,9 +23,46 @@
   white-space: nowrap;
 }
 
+.header-top-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 유틸리티 메뉴: 로그인, 회원가입, 장바구니 */
+.header-utility {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-utility-item {
+  padding: 6px 8px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  font: inherit;
+  font-size: 0.9rem;
+  color: #555;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.header-utility-item:hover {
+  background: #f2f2f2;
+}
+
+/* GNB: 로고 줄 아래, 가운데 정렬, 간격 16px */
+.header-nav {
+  margin-top: 12px;
+}
+
 .header-menu {
   display: flex;
-  gap: 8px;
+  justify-content: center;
+  gap: 16px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -33,6 +74,8 @@
   border-radius: 6px;
   background: none;
   font: inherit;
+  font-size: 20px;
+  font-weight: 700;
   color: #333;
   white-space: nowrap;
   cursor: pointer;
@@ -68,35 +111,104 @@
   background: #333;
 }
 
-/* 좁은 화면: 메뉴 아이콘을 보이고, 누르면 메뉴가 아래로 펼쳐진다 */
+/* 서랍 닫기 버튼과 overlay: 넓은 화면에서는 숨긴다 */
+.header-drawer-close,
+.header-overlay {
+  display: none;
+}
+
+/* 좁은 화면: 메뉴 아이콘을 누르면 오른쪽에서 서랍(drawer)이 밀려 나오고 overlay가 깔린다 */
 @media (max-width: 560px) {
   .header-inner {
-    flex-wrap: wrap;
     padding: 12px 16px;
+  }
+
+  /* 좁은 화면에서도 로고·유틸리티·메뉴 아이콘이 한 줄에 들어가도록 조금 줄인다 */
+  .header-logo {
+    font-size: 1.1rem;
+  }
+
+  .header-top-right,
+  .header-utility {
+    gap: 0;
+  }
+
+  .header-utility-item {
+    padding: 6px;
+    font-size: 0.8rem;
   }
 
   .header-menu-toggle {
     display: flex;
   }
 
-  .header-nav {
-    display: none;
-    width: 100%;
+  /* 화면 전체를 덮는 반투명 검은 배경 */
+  .header-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
+  .header-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* 서랍: 평소에는 화면 오른쪽 바깥에 숨어 있다 */
+  .header-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1001;
+    width: 70vw;
+    height: 100vh;
+    margin-top: 0;
+    padding: 16px;
+    background: #fff;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+  }
+
+  /* 열리면 제자리로 미끄러져 들어온다 */
   .header-nav.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .header-drawer-close {
     display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 0 8px auto;
+    border: none;
+    border-radius: 6px;
+    background: none;
+    font-size: 1.2rem;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .header-drawer-close:hover {
+    background: #f2f2f2;
   }
 
   .header-menu {
     flex-direction: column;
+    justify-content: flex-start;
     gap: 2px;
-    padding-top: 8px;
   }
 
   .header-menu-item {
     width: 100%;
-    padding: 10px 12px;
+    padding: 12px;
     text-align: left;
   }
 }
