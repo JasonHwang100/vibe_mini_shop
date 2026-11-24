@@ -9,6 +9,29 @@
   font-size: 1.5rem;
 }
 
+/* 카테고리 select (card grid 위) */
+.product-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 20px;
+}
+
+.product-filter-label {
+  font-weight: 700;
+  color: #333;
+}
+
+.product-filter-select {
+  min-width: 140px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 /* 넓은 화면 3칸 → 태블릿 2칸 → 휴대폰 1칸 */
 .product-grid {
   display: grid;
