@@ -1,0 +1,87 @@
+/* 화면 전체를 덮는 어두운 배경 (헤더 메뉴보다 위에 보이도록 z-index 를 높게) */
+.product-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* 흰색 modal 상자 */
+.product-modal {
+  width: 100%;
+  max-width: 420px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.product-modal-image {
+  aspect-ratio: 4 / 3;
+  background: #d9d9d9;
+}
+
+.product-modal-body {
+  padding: 18px 20px 20px;
+}
+
+.product-modal-category {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #eef2fd;
+  color: #2f5bea;
+  font-size: 0.85rem;
+}
+
+.product-modal-name {
+  margin: 0 0 6px;
+  font-size: 1.3rem;
+}
+
+.product-modal-price {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2f5bea;
+}
+
+.product-modal-stock {
+  margin: 0 0 12px;
+  color: #555;
+}
+
+.product-modal-soldout {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 4px;
+  background: #e5484d;
+  color: #fff;
+  font-weight: 700;
+}
+
+.product-modal-description {
+  margin: 0 0 20px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.product-modal-close {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.product-modal-close:hover {
+  background: #444;
+}

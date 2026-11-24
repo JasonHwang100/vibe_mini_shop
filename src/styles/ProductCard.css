@@ -3,6 +3,8 @@
   border: 1px solid #e5e5e5;
   border-radius: 10px;
   background: #fff;
+  /* 누를 수 있는 카드라는 것을 알려 주는 손가락 모양 커서 */
+  cursor: pointer;
 }
 
 .product-card-image {
