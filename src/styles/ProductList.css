@@ -9,12 +9,20 @@
   font-size: 1.5rem;
 }
 
-/* 카테고리 select (card grid 위) */
+/* card grid 위 한 줄: 카테고리(왼쪽) + 정렬(오른쪽) */
+.product-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 20px;
+}
+
+/* 카테고리 select / 정렬 select 공통 */
 .product-filter {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 0 0 20px;
 }
 
 .product-filter-label {
@@ -48,5 +56,15 @@
 @media (max-width: 560px) {
   .product-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* 휴대폰: 카테고리 아래 줄의 오른쪽에 정렬 */
+  .product-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-sort {
+    align-self: flex-end;
   }
 }
