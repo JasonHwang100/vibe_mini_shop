@@ -1,19 +1,25 @@
 .product-card {
   overflow: hidden;
+  padding: 16px;
   border: 1px solid #e5e5e5;
-  border-radius: 10px;
+  border-radius: 16px;
   background: #fff;
+  /* 아주 옅은 그림자 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   /* 누를 수 있는 카드라는 것을 알려 주는 손가락 모양 커서 */
   cursor: pointer;
 }
 
+/* card 안쪽 여백(16px) 안에 들어가므로 모서리도 살짝 둥글게 */
 .product-card-image {
   aspect-ratio: 4 / 3;
+  border-radius: 10px;
   background: #d9d9d9;
 }
 
+/* 좌우·아래 여백은 card 의 padding(16px)이 맡고, 사진과의 간격만 둔다 */
 .product-card-body {
-  padding: 14px 16px 18px;
+  padding: 14px 0 0;
 }
 
 .product-card-name {

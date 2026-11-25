@@ -1,8 +1,8 @@
 /* 이용 안내와 같은 폭·여백 (위 여백 0: 앞 영역의 아래 여백 56px 으로 간격) */
 .faq {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px 56px;
+  padding: 0 20px 56px;
 }
 
 .faq-title {

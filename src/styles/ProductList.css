@@ -1,7 +1,9 @@
 .product-list {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 56px 24px;
+  padding: 56px 20px;
+  /* '상품 보러 가기'로 이동했을 때 위에 고정된 띠배너·Header 에 제목이 가려지지 않게 */
+  scroll-margin-top: 100px;
 }
 
 .product-list-title {
@@ -43,7 +45,16 @@
 /* 상품 검색창 (카테고리·정렬 줄 아래) */
 .product-search {
   position: relative;
+  /* PC: 폭 320px (휴대폰에서는 아래 media query 에서 100%) */
+  width: 320px;
+  max-width: 100%;
   margin: 0 0 20px;
+}
+
+@media (max-width: 767px) {
+  .product-search {
+    width: 100%;
+  }
 }
 
 .product-search-input {
@@ -83,6 +94,13 @@
   color: #222;
 }
 
+/* 결과 개수 (card grid 바로 위) */
+.product-count {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
 /* 검색 결과가 없을 때 문구 */
 .product-empty {
   margin: 0;
@@ -92,23 +110,28 @@
 }
 
 /* 넓은 화면 3칸 → 태블릿 2칸 → 휴대폰 1칸 */
+/* PC(1024px 이상) 3열 */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 24px;
 }
 
-@media (max-width: 900px) {
+/* 태블릿(768~1023px) 2열 */
+@media (max-width: 1023px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 560px) {
+/* 모바일(767px 이하) 1열 */
+@media (max-width: 767px) {
   .product-grid {
     grid-template-columns: 1fr;
   }
+}
 
+@media (max-width: 560px) {
   /* 휴대폰: 카테고리 아래 줄의 오른쪽에 정렬 */
   .product-toolbar {
     flex-direction: column;

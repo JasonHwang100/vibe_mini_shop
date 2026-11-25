@@ -14,14 +14,17 @@ function HeroBanner() {
   }
 
   return (
+    // 배경은 화면 끝까지, 안쪽 내용(.hero-banner-inner)만 1200px
     <section className="hero-banner">
-      <h1 className="hero-banner-title">이번 주 새로 들어 온 상품</h1>
-      <p className="hero-banner-text">
-        작은 가게들이 정성껏 준비한 새 상품을 지금 만나 보세요.
-      </p>
-      <button type="button" className="hero-banner-button" onClick={handleClick}>
-        상품 보러 가기
-      </button>
+      <div className="hero-banner-inner">
+        <h1 className="hero-banner-title">이번 주 새로 들어 온 상품</h1>
+        <p className="hero-banner-text">
+          작은 가게들이 정성껏 준비한 새 상품을 지금 만나 보세요.
+        </p>
+        <button type="button" className="hero-banner-button" onClick={handleClick}>
+          상품 보러 가기
+        </button>
+      </div>
     </section>
   )
 }

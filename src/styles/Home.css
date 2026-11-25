@@ -1,0 +1,8 @@
+/* 띠배너 + Header 묶음: 스크롤해도 화면 맨 위에 붙어 있다 (sticky)
+   - 띠배너를 닫으면 묶음 안에 Header 만 남아서 Header 가 맨 위에 붙는다
+   - z-index 100: 상품 card 같은 본문보다 위, 상품 modal(1100)보다는 아래 */
+.site-top {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}

@@ -1,0 +1,21 @@
+/* 사이트에서 쓰는 색을 한곳에 모아 둔 파일
+   다른 CSS 에서 var(--color-이름) 으로 꺼내 쓴다.
+   (지금은 hero banner 만 이 값을 쓰고, 다른 파일은 차차 바꿔 나간다) */
+:root {
+  /* 메인 색: 버튼, 가격 */
+  --color-primary: #2f5bea;
+  /* 메인 색을 조금 어둡게: 버튼에 마우스를 올렸을 때 */
+  --color-primary-dark: #2448c2;
+  /* 보조 색: 연한 파랑 (카테고리 표시, hero 그라데이션 시작) */
+  --color-secondary: #eef2fd;
+  /* 배경색: 연한 회색빛 파랑 (hero 그라데이션 끝, 이용 안내 상자) */
+  --color-background: #f5f7fb;
+
+  /* 글자 색 */
+  --color-text: #222;
+  --color-text-sub: #555;
+
+  /* 기타 */
+  --color-white: #fff;
+  --color-danger: #e5484d;
+}

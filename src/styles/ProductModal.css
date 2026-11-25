@@ -71,6 +71,65 @@
   color: #333;
 }
 
+/* 수량 선택 (설명 아래, 닫기 버튼 위) */
+.product-quantity {
+  margin: 0 0 20px;
+}
+
+.product-quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-quantity-button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #222;
+  cursor: pointer;
+}
+
+.product-quantity-button:hover:not(:disabled) {
+  background: #f2f2f2;
+}
+
+/* 비활성 버튼: 흐리게, 눌리지 않게 */
+.product-quantity-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.product-quantity-value {
+  min-width: 32px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.product-quantity-total {
+  margin: 10px 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #222;
+}
+
+/* 품절: 수량 선택 전체를 흐리게 */
+.product-quantity.is-disabled .product-quantity-controls {
+  opacity: 0.5;
+}
+
+.product-quantity-soldout {
+  margin: 10px 0 0;
+  font-weight: 700;
+  color: #e5484d;
+}
+
 .product-modal-close {
   width: 100%;
   padding: 12px;

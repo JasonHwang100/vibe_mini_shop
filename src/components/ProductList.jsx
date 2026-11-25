@@ -123,6 +123,11 @@ function ProductList() {
         )}
       </div>
 
+      {/* 결과 개수: 전체 상품 수 중 지금 보이는 상품 수 */}
+      <p className="product-count" aria-live="polite">
+        전체 {products.length}개 중 {sortedProducts.length}개
+      </p>
+
       {sortedProducts.length === 0 ? (
         <p className="product-empty">검색 결과가 없어요</p>
       ) : (
