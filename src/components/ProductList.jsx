@@ -24,13 +24,26 @@ function ProductList() {
   // 지금 고른 정렬 방법 (처음에는 기본순)
   const [sort, setSort] = useState('default')
 
+  // 검색창에 입력한 글자 (처음에는 빈 칸)
+  const [keyword, setKeyword] = useState('')
+
   const closeModal = useCallback(() => setSelectedProduct(null), [])
 
   // 고른 카테고리에 맞는 상품만 남기기
-  const visibleProducts =
+  const categoryProducts =
     category === '전체'
       ? products
       : products.filter((product) => product.category === category)
+
+  // 그중에서 상품명에 검색어가 들어 있는 상품만 남기기
+  // (앞뒤 공백은 무시하고, 영어는 대소문자를 구분하지 않는다)
+  const searchText = keyword.trim().toLowerCase()
+  const visibleProducts =
+    searchText === ''
+      ? categoryProducts
+      : categoryProducts.filter((product) =>
+          product.name.toLowerCase().includes(searchText),
+        )
 
   // 걸러진 상품을 고른 정렬 방법으로 줄 세우기
   // (원본 배열이 바뀌지 않도록 복사본을 정렬한다)
@@ -87,16 +100,43 @@ function ProductList() {
         </div>
       </div>
 
-      <div className="product-grid">
-        {sortedProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            name={product.name}
-            price={product.price}
-            onClick={() => setSelectedProduct(product)}
-          />
-        ))}
+      {/* 상품 검색창 (카테고리·정렬 줄 아래) */}
+      <div className="product-search">
+        <input
+          type="search"
+          className="product-search-input"
+          placeholder="상품명을 검색하세요"
+          aria-label="상품명 검색"
+          value={keyword}
+          onChange={(event) => setKeyword(event.target.value)}
+        />
+        {/* 글자가 있을 때만 x 버튼을 보여 준다 */}
+        {keyword !== '' && (
+          <button
+            type="button"
+            className="product-search-clear"
+            aria-label="검색어 지우기"
+            onClick={() => setKeyword('')}
+          >
+            ×
+          </button>
+        )}
       </div>
+
+      {sortedProducts.length === 0 ? (
+        <p className="product-empty">검색 결과가 없어요</p>
+      ) : (
+        <div className="product-grid">
+          {sortedProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              name={product.name}
+              price={product.price}
+              onClick={() => setSelectedProduct(product)}
+            />
+          ))}
+        </div>
+      )}
 
       {selectedProduct && (
         <ProductModal product={selectedProduct} onClose={closeModal} />

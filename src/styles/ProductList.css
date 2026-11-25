@@ -40,6 +40,57 @@
   cursor: pointer;
 }
 
+/* 상품 검색창 (카테고리·정렬 줄 아래) */
+.product-search {
+  position: relative;
+  margin: 0 0 20px;
+}
+
+.product-search-input {
+  box-sizing: border-box;
+  width: 100%;
+  /* 오른쪽 x 버튼 자리만큼 여백 */
+  padding: 10px 44px 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 1rem;
+}
+
+/* 브라우저가 기본으로 넣는 지우기 버튼은 숨기고 직접 만든 x 버튼만 쓴다 */
+.product-search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.product-search-clear {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.product-search-clear:hover {
+  color: #222;
+}
+
+/* 검색 결과가 없을 때 문구 */
+.product-empty {
+  margin: 0;
+  padding: 48px 0;
+  text-align: center;
+  color: #666;
+}
+
 /* 넓은 화면 3칸 → 태블릿 2칸 → 휴대폰 1칸 */
 .product-grid {
   display: grid;
