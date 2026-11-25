@@ -111,9 +111,10 @@
   background: #333;
 }
 
-/* 서랍 닫기 버튼과 overlay: 넓은 화면에서는 숨긴다 */
+/* 서랍 닫기 버튼, overlay, 서랍 안 유틸리티 메뉴: 넓은 화면에서는 숨긴다 */
 .header-drawer-close,
-.header-overlay {
+.header-overlay,
+.header-drawer-utility {
   display: none;
 }
 
@@ -128,14 +129,9 @@
     font-size: 1.1rem;
   }
 
-  .header-top-right,
+  /* 윗줄 유틸리티 메뉴는 숨기고, 서랍 안으로 옮긴다 */
   .header-utility {
-    gap: 0;
-  }
-
-  .header-utility-item {
-    padding: 6px;
-    font-size: 0.8rem;
+    display: none;
   }
 
   .header-menu-toggle {
@@ -210,5 +206,33 @@
     width: 100%;
     padding: 12px;
     text-align: left;
+  }
+
+  /* 서랍 안 유틸리티 메뉴: GNB 아래에 구분선을 두고 작은 글씨로 */
+  .header-drawer-utility {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 12px 0 0;
+    padding: 12px 0 0;
+    border-top: 1px solid #e5e5e5;
+    list-style: none;
+  }
+
+  .header-drawer-utility-item {
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 6px;
+    background: none;
+    font: inherit;
+    font-size: 0.95rem;
+    color: #555;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .header-drawer-utility-item:hover {
+    background: #f2f2f2;
   }
 }

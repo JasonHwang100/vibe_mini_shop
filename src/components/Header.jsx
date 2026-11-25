@@ -91,6 +91,17 @@ function Header() {
               </li>
             ))}
           </ul>
+
+          {/* 서랍 안 유틸리티 메뉴: 좁은 화면에서만 보인다 (넓은 화면은 윗줄 오른쪽에 있음) */}
+          <ul className="header-drawer-utility">
+            {utilityMenus.map((menu) => (
+              <li key={menu}>
+                <button type="button" className="header-drawer-utility-item" onClick={closeMenu}>
+                  {menu}
+                </button>
+              </li>
+            ))}
+          </ul>
         </nav>
       </div>
     </header>
