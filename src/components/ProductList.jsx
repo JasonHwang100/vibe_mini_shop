@@ -4,7 +4,7 @@ import ProductCard from './ProductCard.jsx'
 import ProductModal from './ProductModal.jsx'
 import '../styles/ProductList.css'
 
-// 카테고리 select 의 선택지
+// 카테고리 tab 목록
 const CATEGORIES = ['전체', '생활', '주방', '문구']
 
 // 정렬 select 의 선택지
@@ -14,7 +14,9 @@ const SORT_OPTIONS = [
   { value: 'price-desc', label: '높은 가격순' },
 ]
 
-function ProductList() {
+// wishIds      : 찜한 상품 id 목록
+// onToggleWish : 하트를 눌렀을 때 부르는 함수 (상품 id 를 넘긴다)
+function ProductList({ wishIds = [], onToggleWish }) {
   // 지금 modal 로 보고 있는 상품 (null 이면 modal 닫힘)
   const [selectedProduct, setSelectedProduct] = useState(null)
 
@@ -59,25 +61,24 @@ function ProductList() {
     <section id="product-list" className="product-list">
       <h2 className="product-list-title">상품 목록</h2>
 
-      {/* card grid 위 한 줄: 카테고리 선택(왼쪽) + 정렬 선택(오른쪽) */}
+      {/* card grid 위 한 줄: 카테고리 tab(왼쪽) + 정렬 선택(오른쪽) */}
       <div className="product-toolbar">
-        {/* 카테고리 선택 */}
-        <div className="product-filter">
-          <label htmlFor="category-select" className="product-filter-label">
-            카테고리
-          </label>
-          <select
-            id="category-select"
-            className="product-filter-select"
-            value={category}
-            onChange={(event) => setCategory(event.target.value)}
-          >
-            {CATEGORIES.map((name) => (
-              <option key={name} value={name}>
-                {name}
-              </option>
-            ))}
-          </select>
+        {/* 카테고리 tab: 누르면 그 카테고리 상품만 보인다 */}
+        <div className="category-tabs" role="tablist" aria-label="카테고리">
+          {CATEGORIES.map((name) => (
+            <button
+              key={name}
+              type="button"
+              role="tab"
+              aria-selected={category === name}
+              className={
+                category === name ? 'category-tab is-active' : 'category-tab'
+              }
+              onClick={() => setCategory(name)}
+            >
+              {name}
+            </button>
+          ))}
         </div>
 
         {/* 정렬 선택 */}
@@ -129,7 +130,12 @@ function ProductList() {
       </p>
 
       {sortedProducts.length === 0 ? (
-        <p className="product-empty">검색 결과가 없어요</p>
+        <p className="product-empty">
+          {/* 카테고리에 상품이 아예 없으면 '준비 중', 검색으로 걸러져 없으면 '검색 결과 없음' */}
+          {categoryProducts.length === 0
+            ? '준비 중인 상품입니다.'
+            : '검색 결과가 없어요'}
+        </p>
       ) : (
         <div className="product-grid">
           {sortedProducts.map((product) => (
@@ -137,6 +143,9 @@ function ProductList() {
               key={product.id}
               name={product.name}
               price={product.price}
+              stock={product.stock}
+              isWished={wishIds.includes(product.id)}
+              onToggleWish={() => onToggleWish(product.id)}
               onClick={() => setSelectedProduct(product)}
             />
           ))}

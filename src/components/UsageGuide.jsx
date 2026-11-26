@@ -8,17 +8,20 @@ const steps = [
 
 function UsageGuide() {
   return (
+    // 바깥(section): 배경을 화면 끝까지 / 안쪽(inner): 다른 section 과 같은 폭 1200px
     <section className="usage-guide">
-      <h2 className="usage-guide-title">이용 안내</h2>
-      <ol className="usage-steps">
-        {steps.map((step, index) => (
-          <li key={step.title} className="usage-step">
-            <span className="usage-step-number">{index + 1}</span>
-            <h3 className="usage-step-title">{step.title}</h3>
-            <p className="usage-step-text">{step.text}</p>
-          </li>
-        ))}
-      </ol>
+      <div className="usage-guide-inner">
+        <h2 className="usage-guide-title">이용 안내</h2>
+        <ol className="usage-steps">
+          {steps.map((step, index) => (
+            <li key={step.title} className="usage-step">
+              <span className="usage-step-number">{index + 1}</span>
+              <h3 className="usage-step-title">{step.title}</h3>
+              <p className="usage-step-text">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
     </section>
   )
 }

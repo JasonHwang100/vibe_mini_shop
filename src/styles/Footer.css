@@ -5,47 +5,54 @@
   background: #fafafa;
   color: #666;
   font-size: 0.9rem;
-  text-align: center;
 }
 
-/* 안쪽: 폭 1200px 가운데 정렬, 좌우 여백 20px */
+/* 안쪽: 폭 1200px 가운데 정렬, 좌우 여백 20px
+   PC: 가로 3단, 단 사이 간격 40px */
 .footer-inner {
+  display: flex;
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+/* 3단이 같은 폭을 나눠 갖는다 */
+.footer-col {
+  flex: 1;
 }
 
 .footer p {
   margin: 0 0 6px;
 }
 
-.footer-name {
+.footer-name,
+.footer-col-title {
   color: #222;
   font-weight: 700;
 }
 
-.footer-divider {
-  margin: 0 8px;
-  color: #ccc;
+.footer .footer-name,
+.footer .footer-col-title {
+  margin-bottom: 10px;
 }
 
-.footer .footer-copyright {
-  margin: 12px 0 0;
-  font-size: 0.8rem;
-}
-
-/* 연락처, 이메일은 각각 중간에서 줄이 바뀌지 않게 한다 */
-.footer-contact-item {
+/* 전화번호는 중간에서 줄이 바뀌지 않게, 조금 크게 */
+.footer-phone {
+  color: #222;
+  font-size: 1rem;
+  font-weight: 700;
   white-space: nowrap;
 }
 
-/* 좁은 화면: 연락처와 이메일을 두 줄로, 구분선은 숨긴다 */
-@media (max-width: 560px) {
-  .footer-contact-item {
-    display: block;
-  }
+.footer-copyright {
+  font-size: 0.8rem;
+}
 
-  .footer-divider {
-    display: none;
+/* 휴대폰(767px 이하): 세로 한 줄씩, 단 사이 간격 24px */
+@media (max-width: 767px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 24px;
   }
 }

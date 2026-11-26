@@ -29,6 +29,22 @@
   gap: 4px;
 }
 
+/* 찜한 개수 (♥ 0) */
+.header-wish {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #333;
+  white-space: nowrap;
+}
+
+.header-wish-heart {
+  color: var(--color-danger);
+}
+
 /* 유틸리티 메뉴: 로그인, 회원가입, 장바구니 */
 .header-utility {
   display: flex;

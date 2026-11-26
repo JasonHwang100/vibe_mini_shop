@@ -1,8 +1,21 @@
+/* 바깥: 배경은 화면 끝까지, 위아래 여백 80px (모바일 48px)
+   배경: 보조 색을 흰색과 반씩 섞어 아주 연하게 (색 값은 colors.css) */
 .usage-guide {
+  padding: 80px 0;
+  background: color-mix(in srgb, var(--color-secondary) 50%, var(--color-white));
+}
+
+/* 안쪽: 다른 section 과 같은 폭 1200px·좌우 여백 20px */
+.usage-guide-inner {
   max-width: 1200px;
   margin: 0 auto;
-  /* 위 여백은 0: 상품 목록의 아래 여백(56px)만으로 간격을 만든다 */
-  padding: 0 20px 56px;
+  padding: 0 20px;
+}
+
+@media (max-width: 767px) {
+  .usage-guide {
+    padding: 48px 0;
+  }
 }
 
 .usage-guide-title {
@@ -23,7 +36,8 @@
 .usage-step {
   padding: 24px 20px;
   border-radius: 10px;
-  background: #f5f7fb;
+  /* section 배경이 연한 파랑이 되었으므로, 단계 상자는 흰색으로 구분한다 */
+  background: var(--color-white);
   text-align: center;
 }
 

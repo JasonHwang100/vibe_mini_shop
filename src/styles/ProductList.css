@@ -1,9 +1,16 @@
 .product-list {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 56px 20px;
+  /* 위아래 여백 80px (모바일 48px) */
+  padding: 80px 20px;
   /* '상품 보러 가기'로 이동했을 때 위에 고정된 띠배너·Header 에 제목이 가려지지 않게 */
   scroll-margin-top: 100px;
+}
+
+@media (max-width: 767px) {
+  .product-list {
+    padding: 48px 20px;
+  }
 }
 
 .product-list-title {
@@ -11,7 +18,7 @@
   font-size: 1.5rem;
 }
 
-/* card grid 위 한 줄: 카테고리(왼쪽) + 정렬(오른쪽) */
+/* card grid 위 한 줄: 카테고리 tab(왼쪽) + 정렬(오른쪽) */
 .product-toolbar {
   display: flex;
   align-items: center;
@@ -20,7 +27,45 @@
   margin: 0 0 20px;
 }
 
-/* 카테고리 select / 정렬 select 공통 */
+/* 카테고리 tab 묶음: 폭이 좁아 넘치면 가로로 밀어서 본다 */
+.category-tabs {
+  display: flex;
+  gap: 8px;
+  /* flex 안에서 줄어들 수 있어야 가로 스크롤이 생긴다 */
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+}
+
+.category-tab {
+  /* tab 이 찌그러지지 않고 한 줄로 유지되게 */
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 8px 18px;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  background: var(--color-white);
+  color: var(--color-text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.category-tab:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* 선택한 tab: 주요색 */
+.category-tab.is-active {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+/* 정렬 select */
 .product-filter {
   display: flex;
   align-items: center;
@@ -132,10 +177,10 @@
 }
 
 @media (max-width: 560px) {
-  /* 휴대폰: 카테고리 아래 줄의 오른쪽에 정렬 */
+  /* 휴대폰: 카테고리 tab 아래 줄의 오른쪽에 정렬 */
   .product-toolbar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   .product-sort {

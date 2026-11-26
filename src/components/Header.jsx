@@ -5,7 +5,8 @@ import '../styles/Header.css'
 const utilityMenus = ['로그인', '회원가입', '장바구니']
 const menus = ['상품 목록', '주문하기', '관리자']
 
-function Header() {
+// wishCount : 찜한 상품 개수 (오른쪽 위 '♥ 개수' 로 표시)
+function Header({ wishCount = 0 }) {
   // 좁은 화면에서 서랍(drawer) 메뉴가 열렸는지 여부
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -37,6 +38,16 @@ function Header() {
           <div className="header-logo">미니 쇼핑몰</div>
 
           <div className="header-top-right">
+            {/* 찜한 개수: 좁은 화면에서도 항상 보인다 */}
+            <span
+              className="header-wish"
+              aria-label={`찜한 상품 ${wishCount}개`}
+              aria-live="polite"
+            >
+              <span className="header-wish-heart" aria-hidden="true">♥</span>
+              <span aria-hidden="true">{wishCount}</span>
+            </span>
+
             <ul className="header-utility">
               {utilityMenus.map((menu) => (
                 <li key={menu}>
